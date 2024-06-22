@@ -1,0 +1,19 @@
+program: statement_list
+
+statement_list: statement
+              | statement_list statement
+
+statement: assignment
+         | expression
+
+assignment: ID '=' expression
+
+expression: NUMBER
+          | ID
+          | expression '+' expression
+          | expression '-' expression
+          | expression '*' expression
+          | expression '/' expression
+
+ID: [a-zA-Z][a-zA-Z0-9]*
+NUMBER: [0-9]+

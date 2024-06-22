@@ -1,0 +1,5 @@
+fun suma(a, b) {
+  return a + b;
+}
+
+print suma(3, 4); // Salida: 7

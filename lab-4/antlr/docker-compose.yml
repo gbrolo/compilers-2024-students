@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  terraform-parser:
+    build: .
+    environment:
+      - API_TOKEN=TOKEN
+    volumes:
+      - .:/app
+    working_dir: /app

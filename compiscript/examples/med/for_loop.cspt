@@ -1,0 +1,11 @@
+fun esPar(num) {
+  return num % 2 == 0;
+}
+
+for (var i = 1; i <= 10; i = i + 1) {
+  if (esPar(i)) {
+    print i + " es par";
+  } else {
+    print i + " es impar";
+  }
+}
