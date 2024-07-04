@@ -1,23 +1,10 @@
-# Use an official Ubuntu as a parent image
 FROM ubuntu:latest
 
-# Set the working directory in the container
-WORKDIR /usr/src/app
+RUN apt-get update -y \
+  && apt-get install -y --no-install-recommends build-essential bison flex \
+  && rm -rf /var/lib/apt/lists/*
 
-# Install necessary packages
-RUN apt-get update && apt-get install -y \
-    gcc \
-    flex \
-    bison \
-    && rm -rf /var/lib/apt/lists/*
+COPY files /home/files
 
-# Copy the current directory contents into the container
-COPY . .
-
-# Compile Lex and Yacc code
-RUN flex simple_language.lex
-RUN bison -d simple_language.y
-RUN gcc lex.yy.c y.tab.c -o compiler
-
-# Run the compiler
-CMD ["./compiler"]
+VOLUME /home
+WORKDIR /home
